@@ -1,0 +1,32 @@
+/**
+ * The program identifies Proteins in a DNA strand.
+ */
+public class DNA {
+
+  public static void main(String[] args) {
+    // These DNA strands will be tested with this program.
+    String dna = ""; 
+    String dna1 = "ATGCGATACGCTTGA"; 
+    String dna2 = "ATGCGATACGTGA"; 
+    String dna3 = "ATTAATATGTACTGA"; 
+    
+    // The DNA strand we are testing currently
+    dna = dna2; 
+
+    // Print DNA length and positions of start/stop codons
+    System.out.println("DNA length: " + dna.length()); 
+    System.out.println("Start codon ATG index: " + dna.indexOf("ATG"));
+    System.out.println("Stop codon TGA index: " + dna.indexOf("TGA")); 
+
+    // Check for presence of start and stop codons and validate frame
+    if(dna.indexOf("ATG") != -1 && dna.indexOf("TGA") != -1 && 
+       (dna.indexOf("TGA") - dna.indexOf("ATG")) % 3 == 0) {
+
+      // Extract protein sequence
+      String protein = dna.substring(dna.indexOf("ATG"), dna.indexOf("TGA") + 3); 
+      System.out.println("The protein in this DNA sequence is: " + protein);
+    } else {
+      System.out.println("There is unfortunately no protein in this DNA sequence.");
+    }
+  }
+}
